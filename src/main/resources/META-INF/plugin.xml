@@ -1,0 +1,25 @@
+<idea-plugin>
+    <id>me.hql.linhscript</id>
+    <name>LinhScript</name>
+    <vendor email="linh@example.com" url="http://www.example.com">Đại ca Linh</vendor>
+
+    <description><![CDATA[
+      Ngôn ngữ lập trình bá đạo nhất vũ trụ do đại ca Linh sáng tạo.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileType name="LinhScript File"
+                  implementationClass="me.hql.linhscript.LinhScriptFileType"
+                  fieldName="INSTANCE"
+                  language="LinhScript"
+                  extensions="hql"/>
+        <lang.syntaxHighlighterFactory language="LinhScript"
+                                       implementationClass="me.hql.linhscript.LinhScriptSyntaxHighlighterFactory"/>
+        <lang.braceMatcher language="LinhScript"
+                           implementationClass="me.hql.linhscript.LinhScriptPairedBraceMatcher"/>
+        <annotator language="LinhScript"
+                   implementationClass="me.hql.linhscript.LinhScriptAnnotator"/>
+    </extensions>
+</idea-plugin>

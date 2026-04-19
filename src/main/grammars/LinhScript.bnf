@@ -1,0 +1,81 @@
+{
+  parserClass="me.hql.linhscript.parser.LinhScriptParser"
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="LinhScript"
+  psiImplPackage="me.hql.linhscript.psi.impl"
+  psiPackage="me.hql.linhscript.psi"
+
+  elementTypeHolderClass="me.hql.linhscript.psi.LinhScriptTypes"
+  elementTypeClass="me.hql.linhscript.psi.LinhScriptElementType"
+  tokenTypeClass="me.hql.linhscript.psi.LinhScriptTokenType"
+
+  tokens = [
+    PRINT="print"
+    INPUT="input"
+    IF="if"
+    ELSE="else"
+    WHILE="while"
+    FOR="for"
+    TO="to"
+    IN="in"
+    RANDOM="random"
+    FUNC="func"
+    CALL="call"
+    RETURN="return"
+    ADD="add"
+    SIZE="size"
+    LEN="len"
+    PUSH="push"
+    POP="pop"
+    TYPE="type"
+    STR="str"
+    NUM="num"
+    BOOL="bool"
+    READ="read"
+    WRITE="write"
+    TRUE="true"
+    FALSE="false"
+    NULL="null"
+    NOT="not"
+    IMPORT="import"
+    NEW="new"
+
+    OP_ASSIGN="="
+    OP_PLUS="+"
+    OP_MINUS="-"
+    OP_MUL="*"
+    OP_DIV="/"
+    L_PAREN="("
+    R_PAREN=")"
+    L_BRACE="{"
+    R_BRACE="}"
+    L_BRACKET="["
+    R_BRACKET="]"
+  ]
+}
+
+linhScriptFile ::= item_*
+private item_ ::= (stmt | COMMENT | CRLF)
+stmt ::= var_assignment | print_stmt | expr_stmt
+
+// Đã bỏ var/const, khai báo biến giờ chỉ cần: IDENTIFIER = expr
+var_assignment ::= IDENTIFIER OP_ASSIGN expr
+print_stmt ::= PRINT L_PAREN expr R_PAREN
+expr_stmt ::= expr
+
+expr ::= NUMBER | STRING | IDENTIFIER | TRUE | FALSE | NULL | binary_expr
+binary_expr ::= expr (OP_PLUS | OP_MINUS | OP_MUL | OP_DIV) expr
+
+linhScriptFile ::= item_*
+
+private item_ ::= (stmt | COMMENT | CRLF)
+
+stmt ::= var_assignment | print_stmt | expr_stmt
+
+var_assignment ::= (VAR | CONST) IDENTIFIER OP_ASSIGN expr
+print_stmt ::= PRINT L_PAREN expr R_PAREN
+expr_stmt ::= expr
+
+expr ::= NUMBER | STRING | IDENTIFIER | binary_expr
+binary_expr ::= expr (OP_PLUS | OP_MINUS | OP_MUL | OP_DIV) expr
