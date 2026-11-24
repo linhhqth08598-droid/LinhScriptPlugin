@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <!-- Bóng đổ nhẹ -->
+  <rect x="2" y="2" width="12" height="12" rx="3" fill="#000" opacity="0.12"/>
+
+  <!-- Thân file -->
+  <rect x="1.5" y="1.5" width="12" height="12" rx="3" fill="#3F8F5B" stroke="#2A6340" stroke-width="1"/>
+
+  <!-- Góc gấp trên phải -->
+  <path d="M9.5 1.5 L13.5 5.5 L9.5 5.5 Z" fill="#2A6340"/>
+
+  <!-- Các dòng chữ -->
+  <path d="M4 6h4M4 8.2h7M4 10.4h5"
+        stroke="#FFFFFF" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.95"/>
+
+  <!-- Chấm vàng điểm nhấn -->
+  <circle cx="11.2" cy="10.4" r="1" fill="#FFD966"/>
+</svg>

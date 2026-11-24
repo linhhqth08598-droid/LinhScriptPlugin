@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface LinhScriptVarAssignment extends PsiElement {
+public interface LinhScriptParenExpr extends PsiElement {
 
   @NotNull
   LinhScriptExpr getExpr();

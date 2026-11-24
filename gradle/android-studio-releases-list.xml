@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AndroidStudioReleases>
+    <version>1</version>
+    <item>
+        <name>Offline Placeholder</name>
+        <build>AI-232.8660.185.2321.10406996</build>
+        <version>2023.2.1.0</version>
+        <channel>release</channel>
+        <platformVersion>2023.2.5</platformVersion>
+        <date>2026-04-23</date>
+        <download>
+            <link>https://example.invalid/android-studio.zip</link>
+            <size>0</size>
+            <checksum>offline-placeholder</checksum>
+        </download>
+    </item>
+</AndroidStudioReleases>

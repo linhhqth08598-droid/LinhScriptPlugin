@@ -11,14 +11,14 @@ import static me.hql.linhscript.psi.LinhScriptTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import me.hql.linhscript.psi.*;
 
-public class LinhScriptVarAssignmentImpl extends ASTWrapperPsiElement implements LinhScriptVarAssignment {
+public class LinhScriptAddExprImpl extends ASTWrapperPsiElement implements LinhScriptAddExpr {
 
-  public LinhScriptVarAssignmentImpl(@NotNull ASTNode node) {
+  public LinhScriptAddExprImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull LinhScriptVisitor visitor) {
-    visitor.visitVarAssignment(this);
+    visitor.visitAddExpr(this);
   }
 
   @Override
@@ -29,8 +29,8 @@ public class LinhScriptVarAssignmentImpl extends ASTWrapperPsiElement implements
 
   @Override
   @NotNull
-  public LinhScriptExpr getExpr() {
-    return findNotNullChildByClass(LinhScriptExpr.class);
+  public List<LinhScriptMulExpr> getMulExprList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, LinhScriptMulExpr.class);
   }
 
 }

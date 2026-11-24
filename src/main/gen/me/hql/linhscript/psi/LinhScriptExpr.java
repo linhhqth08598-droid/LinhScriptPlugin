@@ -8,6 +8,42 @@ import com.intellij.psi.PsiElement;
 public interface LinhScriptExpr extends PsiElement {
 
   @Nullable
-  LinhScriptBinaryExpr getBinaryExpr();
+  LinhScriptAddExpr getAddExpr();
+
+  @Nullable
+  LinhScriptAndExpr getAndExpr();
+
+  @Nullable
+  LinhScriptArrayExpr getArrayExpr();
+
+  @Nullable
+  LinhScriptCompareExpr getCompareExpr();
+
+  @Nullable
+  LinhScriptLiteralExpr getLiteralExpr();
+
+  @Nullable
+  LinhScriptMapExpr getMapExpr();
+
+  @Nullable
+  LinhScriptMulExpr getMulExpr();
+
+  @Nullable
+  LinhScriptOrExpr getOrExpr();
+
+  @Nullable
+  LinhScriptParenExpr getParenExpr();
+
+  @Nullable
+  LinhScriptPostfixExpr getPostfixExpr();
+
+  @Nullable
+  LinhScriptPowExpr getPowExpr();
+
+  @Nullable
+  LinhScriptTernaryExpr getTernaryExpr();
+
+  @Nullable
+  LinhScriptUnaryExpr getUnaryExpr();
 
 }

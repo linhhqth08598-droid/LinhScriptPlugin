@@ -11,14 +11,14 @@ import static me.hql.linhscript.psi.LinhScriptTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import me.hql.linhscript.psi.*;
 
-public class LinhScriptBinaryExprImpl extends ASTWrapperPsiElement implements LinhScriptBinaryExpr {
+public class LinhScriptBlockImpl extends ASTWrapperPsiElement implements LinhScriptBlock {
 
-  public LinhScriptBinaryExprImpl(@NotNull ASTNode node) {
+  public LinhScriptBlockImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull LinhScriptVisitor visitor) {
-    visitor.visitBinaryExpr(this);
+    visitor.visitBlock(this);
   }
 
   @Override
@@ -29,8 +29,8 @@ public class LinhScriptBinaryExprImpl extends ASTWrapperPsiElement implements Li
 
   @Override
   @NotNull
-  public List<LinhScriptExpr> getExprList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, LinhScriptExpr.class);
+  public List<LinhScriptStmt> getStmtList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, LinhScriptStmt.class);
   }
 
 }

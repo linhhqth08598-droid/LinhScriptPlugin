@@ -1,0 +1,6 @@
+// Chương trình LinhScript mới
+use hql.io;
+
+print("Hello LinhScript!");
+var ten = input("Nhập tên của bạn: ");
+print("Xin chào " + ten + "!");

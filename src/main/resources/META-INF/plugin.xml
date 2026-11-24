@@ -4,22 +4,69 @@
     <vendor email="linh@example.com" url="http://www.example.com">Đại ca Linh</vendor>
 
     <description><![CDATA[
-      Ngôn ngữ lập trình bá đạo nhất vũ trụ do đại ca Linh sáng tạo.
+      Ngôn ngữ lập trình bá đạo nhất vũ trụ do đại ca Linh sáng tạo.<br/>
+      Có thêm: tô màu tệp cấu hình môi trường <b>.henv</b> (giống .env / .properties) và
+      tạo nhanh tệp .henv mẫu bằng chuột phải thư mục → New → "Tệp .henv mẫu".
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <moduleType id="LINHSCRIPT_MODULE_TYPE"
+                    implementationClass="me.hql.linhscript.wizard.LinhScriptModuleType"/>
+        <psi.referenceContributor language="LinhScript"
+                                  implementation="me.hql.linhscript.LinhScriptReferenceContributor"/>
+        <configurationType implementation="me.hql.linhscript.run.LinhScriptRunConfigurationType"/>
+        <!-- ===== Ngôn ngữ LinhScript (.hql) ===== -->
         <fileType name="LinhScript File"
                   implementationClass="me.hql.linhscript.LinhScriptFileType"
                   fieldName="INSTANCE"
                   language="LinhScript"
                   extensions="hql"/>
+        <lang.parserDefinition language="LinhScript"
+                               implementationClass="me.hql.linhscript.LinhScriptParserDefinition"/>
         <lang.syntaxHighlighterFactory language="LinhScript"
                                        implementationClass="me.hql.linhscript.LinhScriptSyntaxHighlighterFactory"/>
         <lang.braceMatcher language="LinhScript"
                            implementationClass="me.hql.linhscript.LinhScriptPairedBraceMatcher"/>
         <annotator language="LinhScript"
                    implementationClass="me.hql.linhscript.LinhScriptAnnotator"/>
+        <annotator language="LinhScript"
+                   implementationClass="me.hql.linhscript.LinhScriptImportPathAnnotator"/>
+        <completion.contributor language="LinhScript"
+                                implementationClass="me.hql.linhscript.LinhScriptCompletionContributor"/>
+
+        <!-- ===== Tệp cấu hình môi trường (.henv, .henv.local, .henv.production, .henv.example, ten.henv) ===== -->
+        <fileType name="HQL Env File"
+                  implementationClass="me.hql.linhscript.henv.HenvFileType"
+                  fieldName="INSTANCE"
+                  language="HqlEnv"
+                  extensions="henv"
+                  patterns="*.henv.*"/>
+        <lang.parserDefinition language="HqlEnv"
+                               implementationClass="me.hql.linhscript.henv.HenvParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="HqlEnv"
+                                       implementationClass="me.hql.linhscript.henv.HenvSyntaxHighlighterFactory"/>
+        <lang.commenter language="HqlEnv"
+                        implementationClass="me.hql.linhscript.henv.HenvCommenter"/>
+        <colorSettingsPage implementation="me.hql.linhscript.henv.HenvColorSettingsPage"/>
     </extensions>
+
+    <actions>
+        <action id="LinhScript.NewHqlFile"
+                class="me.hql.linhscript.LinhScriptCreateFileAction"
+                text="LinhScript File"
+                description="Tạo tệp mã nguồn LinhScript (.hql) có code mẫu"
+                icon="/icons/hqlFile.svg">
+            <add-to-group group-id="NewGroup" anchor="last"/>
+        </action>
+
+        <action id="LinhScript.NewHenvFile"
+                class="me.hql.linhscript.henv.NewHenvFileAction"
+                text="Tệp .henv mẫu (HQL Env)"
+                description="Tạo tệp cấu hình môi trường LinhScript có dữ liệu mẫu"
+                icon="/icons/henv.svg">
+            <add-to-group group-id="NewGroup" anchor="after" relative-to-action="LinhScript.NewHqlFile"/>
+        </action>
+    </actions>
 </idea-plugin>

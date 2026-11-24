@@ -5,9 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface LinhScriptBinaryExpr extends PsiElement {
+public interface LinhScriptMulExpr extends PsiElement {
 
   @NotNull
-  List<LinhScriptExpr> getExprList();
+  List<LinhScriptPowExpr> getPowExprList();
 
 }
